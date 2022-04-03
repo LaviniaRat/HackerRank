@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class QueenAttack {
@@ -20,15 +19,11 @@ public class QueenAttack {
     }
 
     private static int queenAttack(int n, int k, int r_q, int c_q, List<List<Integer>> obstacles) {
-        byte[][] board = new byte[n][n];
-        for (List<Integer> obstacle : obstacles) {
-            board[obstacle.get(0) - 1][obstacle.get(1) - 1] = 1;
-        }
 
         int counter = 0;
         // Count moves on column above current position
         for (int i = r_q - 2; i >= 0; i--) {
-            if (board[i][c_q-1] == 1) {
+            if (isBlocked(i, c_q-1, obstacles)) {
                 break;
             }
             counter++;
@@ -36,7 +31,7 @@ public class QueenAttack {
 
         // Count moves on column above current position
         for (int i = r_q ; i < n; i++) {
-            if (board[i][c_q-1] == 1) {
+            if (isBlocked(i, c_q-1, obstacles)) {
                 break;
             }
             counter++;
@@ -46,7 +41,7 @@ public class QueenAttack {
         //Count moves on row- left side of current position
 
         for(int i = c_q-2; i>=0; i--){
-            if(board[r_q-1][i]==1){
+            if(isBlocked(r_q-1, i,obstacles)) {
                 break;
             }
             counter++;
@@ -55,7 +50,7 @@ public class QueenAttack {
         //Count moves on row- right side of current position
 
         for(int i = c_q; i<n; i++){
-            if(board[r_q-1][i]==1){
+            if(isBlocked(r_q-1, i, obstacles)){
                 break;
             }
             counter++;
@@ -67,7 +62,7 @@ public class QueenAttack {
         int max = n-1;
         int min=0;
         while(row >= min && row <= max && col >= min && col<=max){
-            if(board[row][col]==1){
+            if(isBlocked(row, col, obstacles)){
                 break;
             }
             row--;
@@ -79,7 +74,7 @@ public class QueenAttack {
         col = c_q-2;
         row = r_q;
         while(row >= min && row <= max && col >= min && col<=max) {
-            if (board[row][col] == 1) {
+            if (isBlocked(row, col, obstacles)) {
                 break;
             }
             row++;
@@ -91,7 +86,7 @@ public class QueenAttack {
         col = c_q-2;
         row = r_q-2;
         while(row >= min && row <= max && col >= min && col<=max) {
-            if (board[row][col] == 1) {
+            if (isBlocked(row, col, obstacles)) {
                 break;
             }
             row--;
@@ -103,7 +98,7 @@ public class QueenAttack {
         col = c_q;
         row = r_q;
         while(row >= min && row <= max && col >= min && col<=max) {
-            if (board[row][col] == 1) {
+            if (isBlocked(row, col, obstacles)) {
                 break;
             }
             row++;
@@ -113,11 +108,13 @@ public class QueenAttack {
         return counter;
     }
 
-
-    private static void printArray(int[][] board) {
-        for (int[] ints : board) {
-            System.out.println(Arrays.toString(ints));
+    public static boolean isBlocked(int row, int col, List<List<Integer>> obstacles) {
+        for (List<Integer> obstacle : obstacles) {
+            if (obstacle.get(0) -1 == row  && obstacle.get(1) - 1 == col ) {
+                return true;
+            }
         }
+
+        return false;
     }
 }
-
