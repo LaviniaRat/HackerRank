@@ -6,32 +6,30 @@ public class HalloweenSale {
         int d = 3;
         int m = 6;
         int s = 85;
-        System.out.println(howManyGames(p,d,m,s));
+        System.out.println(howManyGames(p, d, m, s));
 
     }
 
-    public static int howManyGames(int p, int d, int m, int s){
-        if(s<p) return 0;
-        if(s==p) return 1;
+    public static int howManyGames(int p, int d, int m, int s) {
+        if (s < p) return 0;
+        if (s == p) return 1;
         int count = 1;
         int sum = p;
-        while(p-d>=m){
-            p=p-d;
-            if(sum+p>s){
+        while (p - d >= m) {
+            p = p - d;
+            if (sum + p > s) {
                 return count;
-            }
-            else {
+            } else {
                 count++;
-                sum+=p;
+                sum += p;
             }
         }
-        p=m;
-        while(sum+p<=s){
-            sum =sum+p;
+        while (sum + m <= s) {
+            sum = sum + m;
             count++;
         }
         return count;
-        }
-
     }
+
+}
 
