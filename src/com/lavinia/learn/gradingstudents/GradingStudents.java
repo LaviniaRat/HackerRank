@@ -32,10 +32,10 @@ public class GradingStudents {
                     } else {
                         newgrade = grades.get(i);
                     }
-                } else if(grades.get(i)%5==0){
+                } else {
                     newgrade = grades.get(i);
                 }
-            } else if (grades.get(i) < 38) {
+            } else {
                 newgrade = grades.get(i);
             }
             newlist.add(newgrade);
