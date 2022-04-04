@@ -1,46 +1,34 @@
-### URL 
-https://www.hackerrank.com/challenges/halloween-sale/problem
+###URL
+https://www.hackerrank.com/challenges/grading/problem?isFullScreen=true
 
 ### Problem description
+HackerLand University has the following grading policy:
 
-You wish to buy video games from the famous online video game store Mist.
+Every student receives a grade in the inclusive range from 0 to 100 .
+Any grade less than 40 is a failing grade.
+Sam is a professor at the university and likes to round each student's grade according to these rules:
 
-Usually, all games are sold at the same price,  dollars. However, they are planning to have the seasonal Halloween Sale next month in which you can buy games at a cheaper price. Specifically, the first game will cost  dollars, and every subsequent game will cost  dollars less than the previous one. This continues until the cost becomes less than or equal to  dollars, after which every game will cost  dollars. How many games can you buy during the Halloween Sale?
+If the difference between the grade and the next multiple of 5 is less 3 than , round grade up to the next multiple of 5 .
+If the value of grade is less than 38 , no rounding occurs as the result will still be a failing grade.
+###Examples
+
+grade = 84 round to  (85 - 84 is less than 3)
+grade = 29 do not round (result is less than 40)
+grade = 57 do not round (60 - 57 is 3 or higher)
+Given the initial value of grade for each of Sam's  students, write code to automate the rounding process.
 
 ###Function Description
 
-Complete the howManyGames function in the editor below.
+Complete the function gradingStudents in the editor below.
 
-howManyGames has the following parameters:
+gradingStudents has the following parameter(s):
 
-int p: the price of the first game
-int d: the discount from the previous game price
-int m: the minimum cost of a game
-int s: the starting budget
+int grades[n]: the grades before rounding
+###Returns
 
+int[n]: the grades after rounding as appropriate
 ###Input Format
 
-The first and only line of input contains four space-separated integers , ,  and .
+The first line contains a single integer,n, the number of students.
+Each line i of the n subsequent lines contains a single integer, grades[i] .
 
-
-
-
-Sample Input 0
-
-20 3 6 80
-Sample Output 0
-
-6
-Explanation 0
-
-Assumptions other than starting funds, , match the example in the problem statement. With a budget of , you can buy  games at a cost of . A  game for an additional  units exceeds the budget.
-
-Sample Input 1
-
-20 3 6 85
-Sample Output 1
-
-7
-Explanation 1
-
-This is the same as the previous case, except this time the starting budget  units of currency. This time, you can buy  games since they cost . An additional game at  units will exceed the budget.
