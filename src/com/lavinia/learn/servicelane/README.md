@@ -22,19 +22,17 @@ cases = [[1,2],[2,4]]
 If the entry index, i=1 and the exit, j=2 , there are two segment widths of  2 and respectively 3. The widest vehicle that can fit
 through both is  2. If i =2 and j = 4, the widths are [3,2,1] which limits vehicle width to 1.
 
-###Function Description
+### Function Description
 
 Complete the serviceLane function in the editor below.
 
 serviceLane has the following parameter(s):
 
-int n: the size of width the  array
-
 int cases[t][2]: each element contains the starting and ending indices for a segment to consider, inclusive
 
 int[]width: list of widths
 
-###Returns
+### Returns
 
 
 int[t]: the maximum width vehicle that can pass through each segment of the service lane described
